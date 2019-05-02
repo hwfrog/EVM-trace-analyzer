@@ -1,0 +1,38 @@
+[
+ [
+  {
+   "cti": [],
+   "address": "0x109c4f2ccc82c4d77bde15f306707320294aea3f",
+   "success": true,
+   "path": [[1,2]],
+   "mrd": [[1,2,3]],
+   "srd": [[1,2,4]]
+  },
+  {
+   "cti": [],
+   "address": "0x109c4f2ccc82c4d77bde15f306707320294aea3f",
+   "success": true,
+   "path": [[4,2]],
+   "mrd": [[4,2,3]],
+   "srd": [[4,2,4]]
+  }
+ ],
+ [
+  {
+   "cti": [],
+   "address": "0xbbb",
+   "success": true,
+   "path": [[5,2]],
+   "mrd": [[5,2,3]],
+   "srd": [[5,2,4]]
+  },
+  {
+   "cti": [],
+   "address": "0xbbb",
+   "success": true,
+   "path": [[6,2]],
+   "mrd": [[6,2,3]],
+   "srd": [[6,2,4]]
+  }
+ ]
+]  
