@@ -1,5 +1,4 @@
 import os, json
-
 class TracePartitioner(object):
 	"""docstring for TracePartitioner"""
 	def __init__(self):
@@ -23,23 +22,39 @@ class TracePartitioner(object):
 
 	def writeTraces(self, tx, traces):
 		# write traces of transaction addr into json files
+		CTIDict = {}
 		for trace in traces:
 			output = dict(trace)
 
-			contract = output['address']
-			output.pop('address', None)
-
 			output['tx'] = tx
 			output['serial'] = self.serial
-			output['parent'] = None
 			output['children'] = []
+
+			cti = output['cti']
+			if not cti:
+				output['parent'] = None
+			else:
+				parentCTI = tuple(cti[:-1])
+				parent = CTIDict[parentCTI]
+				output['parent'] = parent['address']
+				parent['children'].append(output['address'])
+
+			CTIDict[tuple(cti)] = output
+
+		self.writeCTIDict(CTIDict)
+
+	def writeCTIDict(self, CTIDict):
+		for key in CTIDict.keys():
+			output = CTIDict[key]
+			contract = output['address']
+			output.pop('address', None)
 
 			# if tx dir not exist, create it
 			txDir = os.path.join(self.traceDir, contract)
 			if not os.path.exists(txDir):
 				os.makedirs(txDir)
 
-			if 'code' in trace: # creation
+			if 'code' in output: # creation
 				with open(os.path.join(txDir, 'creation.json'), 'w') as f:  
 					json.dump(output, f)
 			else:
@@ -65,7 +80,8 @@ class TracePartitioner(object):
 			fileName = str(fileIndex) + '.json'
 			with open(os.path.join(txDir, fileName), 'w') as f:  
 				json.dump(self.traceMap[k], f)
-			self.traceMap[k] = []			
+			self.traceMap[k] = []		
+
 	def partition(self):
 		# 1. get all block numbers
 		blockNs = os.listdir(self.rawTraceDir)

@@ -2,15 +2,47 @@
  [
   {
    "cti": [],
-   "address": "0x109c4f2ccc82c4d77bde15f306707320294aea3f",
+   "address": "1",
    "success": true,
    "path": [[1,2]],
    "mrd": [[1,2,3]],
    "srd": [[1,2,4]]
   },
   {
-   "cti": [],
-   "address": "0x109c4f2ccc82c4d77bde15f306707320294aea3f",
+   "cti": [0],
+   "address": "2",
+   "success": true,
+   "path": [[4,2]],
+   "mrd": [[4,2,3]],
+   "srd": [[4,2,4]]
+  },
+  {
+   "cti": [1],
+   "address": "3",
+   "success": true,
+   "path": [[4,2]],
+   "mrd": [[4,2,3]],
+   "srd": [[4,2,4]]
+  },
+  {
+   "cti": [0, 0],
+   "address": "2",
+   "success": true,
+   "path": [[4,2]],
+   "mrd": [[4,2,3]],
+   "srd": [[4,2,4]]
+  },
+  {
+   "cti": [1,0],
+   "address": "3",
+   "success": true,
+   "path": [[4,2]],
+   "mrd": [[4,2,3]],
+   "srd": [[4,2,4]]
+  },
+  {
+   "cti": [1,1],
+   "address": "1",
    "success": true,
    "path": [[4,2]],
    "mrd": [[4,2,3]],
