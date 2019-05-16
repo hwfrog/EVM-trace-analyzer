@@ -76,6 +76,7 @@ traces/0x109c4f2ccc82c4d77bde15f306707320294aea3f/0.json
 ## Basic workflow:
 * Scan all the traces
 * For each trace,
-       * Assign a serial number for binary search
-       * Attach the parent/children references
-       * Categorize into the correct contract directory
+    * Assign a serial number for binary search
+    * Attach the parent/children references
+    * Categorize into the correct contract directory
+        
