@@ -1,4 +1,4 @@
-# EVM-trace-partitoiner
+# EVM-trace-partitioner
 
 ## Objective
 The trace partitioner re-categorizes the raw traces that were sorted by block according to their contract numbers.  
