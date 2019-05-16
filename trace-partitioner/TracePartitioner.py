@@ -30,6 +30,15 @@ class TracePartitioner(object):
 			output['serial'] = self.serial
 			output['children'] = []
 
+
+			cti =  output['cti']
+			if cti:
+				CTIDict[tuple(cti)] = output
+			else:
+				CTIDict[()] = output
+		
+		for k in CTIDict.keys():	
+			output = CTIDict[k]
 			cti = output['cti']
 			if not cti:
 				output['parent'] = None
@@ -38,8 +47,6 @@ class TracePartitioner(object):
 				parent = CTIDict[parentCTI]
 				output['parent'] = parent['address']
 				parent['children'].append(output['address'])
-
-			CTIDict[tuple(cti)] = output
 
 		self.writeCTIDict(CTIDict)
 
