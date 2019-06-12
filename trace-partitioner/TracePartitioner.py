@@ -1,11 +1,13 @@
 import os, json
+import argparse
+
 class TracePartitioner(object):
 	"""docstring for TracePartitioner"""
-	def __init__(self):
+	def __init__(self, rawTraceDir, traceDir):
 		super(TracePartitioner, self).__init__()
 		self.serial = 0
-		self.rawTraceDir = './trace-logs/rawtraces'
-		self.traceDir = './trace-logs/traces'
+		self.rawTraceDir = rawTraceDir #'./trace-logs/rawtraces'
+		self.traceDir = traceDir #'./trace-logs/traces'
 		self.traceLimit = 10000
 		self.traceNumberMap = {} # map number of traces to the contract
 		self.traceMap = {} # map traces to the contract
@@ -109,5 +111,13 @@ class TracePartitioner(object):
 
 
 if __name__ == '__main__':
-	TP = TracePartitioner()
+        parser = argparse.ArgumentParser(
+        description='Partition raw traces into respective contract folders.')
+        parser.add_argument('rawTraceDir',
+                    help='Path to directory containing raw traces')
+        parser.add_argument('traceDir',
+                    help='Path to new directory for partitioned traces')
+        args = parser.parse_args()
+    
+	TP = TracePartitioner(rawTraceDir, traceDir)
 	TP.partition()

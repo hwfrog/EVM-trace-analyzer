@@ -3,7 +3,14 @@
 ## Objective
 The trace partitioner re-categorizes the raw traces that were sorted by block according to their contract numbers.  
 
-## Format
+## Usage
+```
+python trace-partitioner/TracePartitioner.py [path/to/raw_trace_directory] [path/to/new_trace_directory]
+```
+where new_trace_directory is the directory for storing the partitioned traces.
+
+## References
+### Format
 Input: json traces categorized by block number
 
 Output: json traces categorized by contract number <br>
@@ -17,7 +24,7 @@ Also, we eliminate the 'address' field.
 
 <sup>1</sup>*Note: contract creation runs distinct code, and its corresponding trace should not be mixed with its following traces. Instead, this entry should be placed in another file called 'creation.json'.*
 
-## Examples
+### Examples
 Input: 
 ```
 rawtraces/00050111/txlist.json
@@ -73,7 +80,7 @@ traces/0x109c4f2ccc82c4d77bde15f306707320294aea3f/0.json
 
  ```
 
-## Basic workflow:
+### Basic workflow:
 * Scan all the traces
 * For each trace,
     * Assign a serial number for binary search
