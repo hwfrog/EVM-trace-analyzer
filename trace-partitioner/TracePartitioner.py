@@ -119,5 +119,5 @@ if __name__ == '__main__':
                     help='Path to new directory for partitioned traces')
         args = parser.parse_args()
     
-	TP = TracePartitioner(rawTraceDir, traceDir)
+	TP = TracePartitioner(args.rawTraceDir, args.traceDir)
 	TP.partition()
